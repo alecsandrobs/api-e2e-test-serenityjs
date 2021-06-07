@@ -20,12 +20,12 @@ Run the `npm install` command to install the necessary dependencies.
 
 `npm run test:report` - run all tests generating the report at the end.
 
-`ENV=development npm run test` - run all tests on a specific environment.
+`ENV=development npm run test:report` - run all tests on a specific environment.
 
 #### Running specific tests
-`TAGS="@" npm run tags` - run all tests that have the '@' tag.
+`TAGS="@peopleEdit" npm run tags` - run all tests that have the '@peopleEdit' tag.
 
-`SCENARIO="" npm run scenario` - run the scenario with given name ''.
+`SCENARIO="Insert person" npm run scenario` - run the scenario with given name 'Insert person'.
 
 `FILE="people" npm run file` - run tests with feature name 'people.feature'.
 
@@ -40,6 +40,6 @@ Run the `npm install` command to install the necessary dependencies.
 
 ### Running with docker
 
-`CURRENT_UID=$(id -u):$(id -g) docker-compose up` - run the specific like as defined on command docker-compose.yml.
+`docker-compose up` - run the specific like as defined on command docker-compose.yml.
 
 * The report will available at `/opt/nfs/api-tests/target/site/serenity/index.html`.
