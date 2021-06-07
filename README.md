@@ -9,7 +9,7 @@ API end to end testes with SerenityJS
 * Npm
 * Java 8 (to manage serenity version and report generation)
 
-### Instalando
+### Installing
 Run the `npm install` command to install the necessary dependencies.
 
 ### Running the tests locally
@@ -17,14 +17,20 @@ Run the `npm install` command to install the necessary dependencies.
 #### Running all tests
 
 `npm run test` - run all tests.
+
 `npm run test:report` - run all tests generating the report at the end.
+
 `ENV=development npm run test` - run all tests on a specific environment.
 
 #### Running specific tests
 `TAGS="@" npm run tags` - run all tests that have the '@' tag.
+
 `SCENARIO="" npm run scenario` - run the scenario with given name ''.
-`FEATURE="" npm run path` - run tests with feature name ''.
-`PATH="" npm run path` - run tests that are in the given path ''.
+
+`FILE="people" npm run file` - run tests with feature name 'people.feature'.
+
+`DIR="people" npm run dir` - run tests that are in the given path dir 'people'.
+
 
 #### Generating reports
 `npm run report` - it will generate the report inside the path target with the execution data.
@@ -34,16 +40,6 @@ Run the `npm install` command to install the necessary dependencies.
 
 ### Running with docker
 
-First, it could done the containers cleaning, running the following command:
-`docker-compose down --remove-orphans`
-
-#### Running all tests
-
-`CURRENT_UID=$(id -u):$(id -g) docker-compose up` - run all tests.
-`ENV=development CURRENT_UID=$(id -u):$(id -g) docker-compose up` - run all tests on a specific environment.
-
-#### Running specific tests
-`PARAMETER=tags VALUE="@login" CURRENT_UID=$(id -u):$(id -g) docker-compose up` - run the specific tests with given parameters.
-* The parametes could be: tags, scenario, feature or path.
+`CURRENT_UID=$(id -u):$(id -g) docker-compose up` - run the specific like as defined on command docker-compose.yml.
 
 * The report will available at `/opt/nfs/api-tests/target/site/serenity/index.html`.

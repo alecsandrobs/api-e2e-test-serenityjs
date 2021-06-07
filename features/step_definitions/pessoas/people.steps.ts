@@ -27,7 +27,7 @@ When(/^(?:that |)s?he sends a POST request to people endpoint with data$/, (tabl
   )
 )
 
-When(/^(?:ele|ela) envia uma requisição PUT para o endpoint de pessoas com os dados para o identificador da pessoa$/, (table: DataTable) =>
+When(/^s?he sends a PUT request do people endpoint with data and its id$/, (table: DataTable) =>
   actorInTheSpotlight().answer(LastResponse.body()).then((pessoa: any) =>
     actorInTheSpotlight().attemptsTo(
       SendPeoplePut.withData(table.rowsHash()).withId(pessoa._id),
@@ -36,7 +36,7 @@ When(/^(?:ele|ela) envia uma requisição PUT para o endpoint de pessoas com os 
   )
 )
 
-When(/^(?:ele|ela) envia uma requisição DELETE para o endpoint de pessoas com seu identificador$/, () =>
+When(/^s?he sends a DELETE request to people endpoint with its id$/, () =>
   actorInTheSpotlight().answer(LastResponse.body()).then((pessoa: any) =>
     actorInTheSpotlight().attemptsTo(
       SendPeopleDelete.withId(pessoa._id)
@@ -56,7 +56,7 @@ When(/^s?he sends a GET request to people endpoint filtering by name "([^"]*)"$/
   )
 )
 
-When(/^(?:ele|ela) envia uma requisição GET para o endpoint de pessoas especificando um identificador válido$/, () =>
+When(/^s?he sends a GET request to people endpoint by its id$/, () =>
   actorInTheSpotlight().answer(LastResponse.body()).then((pessoa: any) =>
     actorInTheSpotlight().attemptsTo(
       TakeNote.of(pessoa).as('pessoa'),
@@ -77,7 +77,7 @@ Then(/^s?he should see that the person data was successfully created$/, () =>
   )
 )
 
-Then(/^(?:ele|ela) deveria ver que o registro da pessoa foi (?:alterado|buscado) com sucesso$/, () =>
+Then(/^s?he should see that the person data was successfully (?:located|updated)$/, () =>
   actorInTheSpotlight().answer(Note.of('pessoa')).then((pessoa: any) =>
     actorInTheSpotlight().attemptsTo(
       Ensure.that(LastResponse.status(), hasSuccessfullStatus),
@@ -89,7 +89,7 @@ Then(/^(?:ele|ela) deveria ver que o registro da pessoa foi (?:alterado|buscado)
   )
 )
 
-Then(/^(?:ele|ela) deveria ver que o registro da pessoa foi removido com sucesso$/, () =>
+Then(/^s?he should see that the person data was successfully removed$/, () =>
   actorInTheSpotlight().attemptsTo(
     Ensure.that(LastResponse.status(), hasNoContentStatus),
     Ensure.that(LastResponse.body(), equals('' as any)),
