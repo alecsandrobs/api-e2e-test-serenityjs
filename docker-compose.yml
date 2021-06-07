@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  api-testes:
+    privileged: true
+    image: ringcentral/node:latest
+    volumes:
+      - ./:/api-tests
+      - /opt/nfs/api-tests/target:/api-tests/target
+    working_dir: /api-tests
+    environment:
+      - ENV=$ENV
+      - CURRENT_UID=$CURRENT_UID
+    command: bash -c "npm i && npm run update && npm run test && npm run report"
+    networks: 
+      - default

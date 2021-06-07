@@ -1,0 +1,22 @@
+{
+  "cucumberautocomplete.steps": ["features/step_definitions/**/*.ts"],
+  "cucumberautocomplete.syncfeatures": "features/requirements/**/*.feature",
+  "cucumberautocomplete.strictGherkinCompletion": true,
+  "editor.formatOnSave": false,
+  "eslint.alwaysShowStatus": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "window.zoomLevel": 1,
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[feature]": {
+    "editor.defaultFormatter": "alexkrechik.cucumberautocomplete"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.fixAll.eslint": true
+  }
+}
